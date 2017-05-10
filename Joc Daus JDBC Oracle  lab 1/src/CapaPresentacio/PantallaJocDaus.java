@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -115,15 +116,22 @@ public class PantallaJocDaus extends javax.swing.JFrame {
         jButtonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	frameusuari.dispose();
-            	PantallaJocDaus frame = new PantallaJocDaus();
-				frame.setVisible(true);
+            	try{
+            		String user= jTextUsername.getText();
+            		String pass= new String(jPassFieldPassword.getPassword());
+            		new CapaAplicacio.LoginController().login(user,pass);
+            		frameusuari.dispose();
+                	PantallaJocDaus frame = new PantallaJocDaus();
+    				frame.setVisible(true);
+            	}
+            	catch (Exception ew){
+            		ew.printStackTrace();
+            	}
             }
         });
     	
     }
     
-   
     private void initComponents() {
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setBounds(39, 38, 88, 17);

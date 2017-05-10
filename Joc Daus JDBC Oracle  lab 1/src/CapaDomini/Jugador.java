@@ -26,14 +26,6 @@ public class Jugador {
         this.nom = nom;
     }
 
-    /*public String resultatPartides() {
-        String resultat = "";
-        for (Partida p : partides) {
-            resultat += p + "\n";
-        }
-        return resultat;
-    }*/
-
     public void addPartida(int dau1, int dau2) {
         darreraPartida = new Partida(dau1, dau2);
         this.desarDarreraPartida();

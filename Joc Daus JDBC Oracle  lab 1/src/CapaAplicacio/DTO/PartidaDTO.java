@@ -23,7 +23,6 @@ public class PartidaDTO {
 		return String.valueOf(this.dau2);
 	}
 
-
 	public String getResultat() {
 		String resultat;
         if (this.resultat) {
