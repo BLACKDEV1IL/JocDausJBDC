@@ -8,6 +8,7 @@ import CapaAplicacio.DTO.PartidaDTO;
 import CapaDomini.Dau;
 import CapaDomini.Jugador;
 import CapaDomini.Partida;
+import CapaPersistencia.JugadorBBDD;
 
 public class ControladorJocDaus {
 
@@ -35,6 +36,10 @@ public class ControladorJocDaus {
     public JugadorDTO getJugadorDTO() {
         return new JugadorDTO(jugador);
     }
+    
+    public String getNomJugador() {
+		return jugador.getNom();
+	}
 
     public PartidaDTO getPartidaEnCurs() {
         return new PartidaDTO(jugador.getPartidaEnCurs());
@@ -46,8 +51,14 @@ public class ControladorJocDaus {
 
     public void nouJugador(String nom) throws Exception {
         //Si el nom és "Anonim" no cal fer res
-        if (!nom.equalsIgnoreCase("Anonim")) {          
-               jugador = new Jugador(nom);            
+    	if(!nom.equalsIgnoreCase("Anonim")){
+    		jugador= new Jugador(nom);	
+    	}
+        if (checkName(nom)){           
+        	JugadorBBDD jugador=new JugadorBBDD();
+        	if(jugador.isThereAPlayerNamed(nom)){
+        		this.jugador= new JugadorBBDD().searchForPlayer(nom);
+        	}		
         }
     }
 
@@ -59,8 +70,18 @@ public class ControladorJocDaus {
         }
         return result;
     }
-
-	public String getNomJugador() {
-		return null;
-	}	
+    
+    public void acabarJoc() throws Exception{
+	if (checkName(getNomJugador())) {
+        if(!new JugadorBBDD().isThereAPlayerNamed(getNomJugador())){
+          new JugadorBBDD().insertPlayerFinal(jugador);
+        }
+          new JugadorBBDD().insertGameJugadorBBDD(jugador);
+        
+      }
+    }
+    
+    private boolean checkName(String name) {
+    	return !name.equalsIgnoreCase("Anonim");
+	}
 }

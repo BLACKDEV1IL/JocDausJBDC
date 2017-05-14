@@ -56,9 +56,6 @@ public class Jugador {
         partides.add(darreraPartida);
     }
 
-    /*private void actualitzarGuanyades() {
-        guanyades += darreraPartida.getGuanyada() ? 1 : 0;
-    }*/
 
     public List<Partida> getPartides() {
         return partides;
@@ -71,4 +68,8 @@ public class Jugador {
     public void setNumPartidesPersistents(int numPartides) {
        numPartidesPersistents = numPartides;
     }
+
+	public List<Partida> getPartidesNoGuardades() {
+		return partides.subList(numPartidesPersistents, partides.size());
+	}
 }

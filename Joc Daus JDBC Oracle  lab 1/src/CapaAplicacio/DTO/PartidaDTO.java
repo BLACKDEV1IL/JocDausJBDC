@@ -14,13 +14,11 @@ public class PartidaDTO {
 	}
 
 	public String getDau1() {
-		// TODO Auto-generated method stub
-		return String.valueOf(this.dau1);
+		return Integer.toString(dau1);
 	}
 
 	public String getDau2() {
-		// TODO Auto-generated method stub
-		return String.valueOf(this.dau2);
+		return Integer.toString(dau2);
 	}
 
 	public String getResultat() {

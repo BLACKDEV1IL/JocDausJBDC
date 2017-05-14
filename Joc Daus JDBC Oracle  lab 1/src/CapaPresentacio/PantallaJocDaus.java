@@ -6,7 +6,11 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -104,6 +108,7 @@ public class PantallaJocDaus extends javax.swing.JFrame {
         frameusuari.pack();
         frameusuari.setVisible(true);
         frameusuari.setLocationRelativeTo(null);
+        frameusuari.getRootPane().setDefaultButton(jButtonLogin);
         frameusuari.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         jButtonCancel.addActionListener(new ActionListener() {
@@ -125,10 +130,11 @@ public class PantallaJocDaus extends javax.swing.JFrame {
     				frame.setVisible(true);
             	}
             	catch (Exception ew){
-            		ew.printStackTrace();
+            		String format = ew.getMessage();
+            		JOptionPane.showMessageDialog(null, format, "Error", JOptionPane.ERROR_MESSAGE);
             	}
             }
-        });
+        });     
     	
     }
     
@@ -164,6 +170,15 @@ public class PantallaJocDaus extends javax.swing.JFrame {
         jLabel8.setBounds(199, 280, 14, 17);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+               try{
+            	   controladorJocDaus.acabarJoc();
+               }catch (Exception e2) {
+            	   JOptionPane.showMessageDialog(null, e2.getMessage(),"Error guardant el joc",JOptionPane.ERROR_MESSAGE);
+               }
+            }
+        });
         setTitle("Joc Daus");      
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
