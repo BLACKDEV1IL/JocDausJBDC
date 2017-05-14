@@ -52,21 +52,20 @@ public class JugadorBBDD {
 		ResultSet result = selectPlayer(name);
 		if (!result.next())
 			throw new Exception("Player could not be retrieved from database");
-		
+
 		String nomJugador = result.getString("nom");
 		return new Jugador(nomJugador);
 	}
-	
-	public Jugador searchForPlayer(String name) throws Exception{
-	    try{
-	      Jugador player = getPlayerFromDB(name);
-	      gameDB.setGamesPlayer(player);
-	      return player;
-	    }
-	    catch(SQLException e){
-	      throw new Exception("Player was not found");
-	    }
-	  }
+
+	public Jugador searchForPlayer(String name) throws Exception {
+		try {
+			Jugador player = getPlayerFromDB(name);
+			gameDB.setGamesPlayer(player);
+			return player;
+		} catch (SQLException e) {
+			throw new Exception("Player was not found");
+		}
+	}
 
 	private ResultSet selectPlayer(String name) throws SQLException {
 		String query = "SELECT NOM FROM JUGADOR WHERE NOM=?";
@@ -83,7 +82,5 @@ public class JugadorBBDD {
 		return queryInsertPlayer.executeUpdate() == 1;
 
 	}
-	
-	
 
 }

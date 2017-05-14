@@ -21,32 +21,31 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 import oracle.jdbc.driver.OracleDriver;
 
-
 public class ConnectionBBDD implements Connection {
-private Connection connection;
-	
-	public ConnectionBBDD(String user, String password) throws Exception{
-		
+	private Connection connection;
+
+	public ConnectionBBDD(String user, String password) throws Exception {
+
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			connection=DriverManager.getConnection("jdbc:oracle:thin:@kali.eupmt.tecnocampus.cat:1521:sapiens",user,password);
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@kali.eupmt.tecnocampus.cat:1521:sapiens", user,
+					password);
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
-		
+
 	}
-	
+
 	@Override
 	public Statement createStatement() throws SQLException {
 		return connection.createStatement();
 	}
-	
+
 	@Override
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
 		return connection.prepareStatement(sql);
 	}
 
-	
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		// TODO Auto-generated method stub
@@ -62,25 +61,25 @@ private Connection connection;
 	@Override
 	public void abort(Executor arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void clearWarnings() throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void close() throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void commit() throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -112,8 +111,6 @@ private Connection connection;
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 	@Override
 	public Statement createStatement(int arg0, int arg1) throws SQLException {
@@ -241,7 +238,6 @@ private Connection connection;
 		return null;
 	}
 
-	
 	@Override
 	public PreparedStatement prepareStatement(String arg0, int arg1) throws SQLException {
 		// TODO Auto-generated method stub
@@ -275,61 +271,61 @@ private Connection connection;
 	@Override
 	public void releaseSavepoint(Savepoint arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void rollback() throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void rollback(Savepoint arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setAutoCommit(boolean arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setCatalog(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setClientInfo(Properties arg0) throws SQLClientInfoException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setClientInfo(String arg0, String arg1) throws SQLClientInfoException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setHoldability(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setNetworkTimeout(Executor arg0, int arg1) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setReadOnly(boolean arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -347,19 +343,19 @@ private Connection connection;
 	@Override
 	public void setSchema(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setTransactionIsolation(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setTypeMap(Map<String, Class<?>> arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
